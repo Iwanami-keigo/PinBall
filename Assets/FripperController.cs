@@ -25,7 +25,10 @@ public class FripperController : MonoBehaviour {
 	void Update () {
 		//画面の左右をタッチしてフリッパーを動かす
 		if (Input.touchCount >= 1) {
-			Touch touch = Input.GetTouch (0);
+			for(int i = 0; i < Input.touchCount;i++){
+				Touch touch = Input.GetTouch (i);
+
+
 			if (touch.position.x < Screen.width / 2 && tag == "LeftFripperTag") {
 				if (touch.phase == TouchPhase.Began) {
 					SetAngle (this.flickAngle);
@@ -62,6 +65,7 @@ public class FripperController : MonoBehaviour {
 		if (Input.GetKeyUp(KeyCode.RightArrow) && tag == "RightFripperTag") {
 			SetAngle (this.defaultAngle);
 		}
+	}
 	}
 
 	//フリッパーの傾きを設定
